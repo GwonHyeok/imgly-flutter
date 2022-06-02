@@ -56,12 +56,9 @@ open class FlutterIMGLY: FlutterPlugin, MethodChannel.MethodCallHandler, Activit
   override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) { }
 
   /** Called as soon as the plugin receives the result for a permission request. */
-  override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>?, grantResults: IntArray?): Boolean {
-    if (grantResults != null) {
-      PermissionRequest.onRequestPermissionsResult(requestCode, permissions, grantResults)
-      return true
-    }
-    return false
+  override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray): Boolean {
+    PermissionRequest.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    return true
   }
 
   /** Called as soon as a permission request has been granted. */
